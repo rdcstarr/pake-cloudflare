@@ -26,6 +26,29 @@ The **Google, Apple and GitHub buttons do not work**: those providers refuse to
 authenticate inside an embedded webview. "Continue with SSO" leaves the host
 too. This is a property of the providers, not something the app can fix.
 
+## Cloudflare challenges its own dashboard here
+
+Worth knowing before you install it on Linux. Running the packaged app on the
+machine it was built on, `dash.cloudflare.com` answered twice, differently:
+
+- first launch — the login page, with *"There was a problem with verification.
+  Please reload and try again."* under the form
+- second launch — the interstitial instead of the page: *"Performing security
+  verification"* with a Turnstile checkbox and a Ray ID
+
+The same URL fetched by raw WebKitGTK, same engine and a fresh profile, showed
+neither, twice — so this is Cloudflare's bot protection reacting to the client,
+not the page failing to load. WebKitGTK announces itself as
+`Version/60.5 Safari/605.1.15`, a Safari that has not existed for years, which
+is the kind of signal that earns a challenge.
+
+The checkbox is interactive, so a human can plausibly clear it; that has not
+been verified here. macOS and Windows put WKWebView and WebView2 behind the same
+window — engines Cloudflare sees from ordinary browsers all day — and neither
+has been observed being challenged. If the challenge does block you, the
+dashboard in your browser is unaffected: this is about the wrapper, not the
+account.
+
 ## One host, deliberately
 
 `safeDomain` lists `dash.cloudflare.com` and nothing else. Everything the
