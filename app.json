@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/tw93/Pake/main/schema/pake.schema.json",
+  "url": "https://dash.cloudflare.com/",
+  "name": "Cloudflare",
+  "identifier": "tools.rec.cloudflare",
+  "title": "Cloudflare Dashboard",
+  "icon": "icons/cloudflare.png",
+  "width": 1500,
+  "height": 1000,
+  "minWidth": 1100,
+  "minHeight": 700,
+  "appVersion": "1.0.0",
+  "newWindow": true,
+  "safeDomain": "dash.cloudflare.com",
+  "enableFind": true
+}
