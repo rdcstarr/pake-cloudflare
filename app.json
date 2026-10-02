@@ -10,6 +10,9 @@
   "minWidth": 1100,
   "minHeight": 700,
   "appVersion": "1.0.0",
+  "inject": [
+    "inject/go-to-link.js"
+  ],
   "newWindow": true,
   "safeDomain": "dash.cloudflare.com",
   "enableFind": true

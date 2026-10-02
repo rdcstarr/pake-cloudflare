@@ -62,6 +62,23 @@ to the browser. `scripts/check-config.mjs` reads the regex Pake compiled for the
 build and fails the workflow if the dashboard, the login or the token page ever
 stop matching.
 
+## Go to Link
+
+macOS will not hand this window a link. The app registers no URL scheme, so a
+dashboard link clicked in Mail is refused by the system before the app is asked
+— *"The application Cloudflare cannot open the specified document or URL."*
+Registering one would mean declaring the app a browser for every link on the
+machine, so the way in is a paste instead.
+
+**File → Go to Link…** (⇧⌘L) opens a field: paste, press Enter, and the window
+navigates there. Links off `dash.cloudflare.com` are refused in the field rather
+than handed to the browser, so the field cannot become a way out of the app.
+
+The menu item is added by `scripts/add-go-to-link.mjs`, which patches pake's
+`menu.rs` before the build; the field itself is `inject/go-to-link.js`, injected
+into the page, where the session and pake's own internal-URL regex already live.
+The script fails the build if pake's menu has moved.
+
 ## What builds, and where
 
 | Platform | Format | Architecture |
